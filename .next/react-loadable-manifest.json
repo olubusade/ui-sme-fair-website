@@ -1,0 +1,32 @@
+{
+  "components/Layout.tsx -> @srexi/purecounterjs": {
+    "id": 1747,
+    "files": [
+      "static/chunks/747.a5266ad213f55f61.js"
+    ]
+  },
+  "components/Layout.tsx -> aos": {
+    "id": 7304,
+    "files": [
+      "static/chunks/304.89f49e6134922640.js"
+    ]
+  },
+  "components/Layout.tsx -> swiper": {
+    "id": 425,
+    "files": [
+      "static/chunks/425.248df64ecb8c35ba.js"
+    ]
+  },
+  "pages/gallery.tsx -> glightbox": {
+    "id": 648,
+    "files": [
+      "static/chunks/648.a849c758fcfbe08d.js"
+    ]
+  },
+  "pages/gallery.tsx -> isotope-layout": {
+    "id": 6650,
+    "files": [
+      "static/chunks/650.55abd222934ed9d7.js"
+    ]
+  }
+}
