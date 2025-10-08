@@ -1,0 +1,10 @@
+# Block all bots from crawling the Next.js API routes
+User-agent: *
+Disallow: /php-api/
+
+# Allow all other pages to be crawled
+User-agent: *
+Allow: /
+
+# Specify the URL of your sitemap
+Sitemap: https://www.uismefairng.com/sitemap.xml

@@ -1,0 +1,277 @@
+[
+  {
+    "id": 1,
+    "category": "filter-staff",
+    "title": "CEO",
+    "description": "CEO",
+    "image": "/assets/img/gallery/bethelspecialist_CEO2.jpg",
+    "alt":"CEO"
+  },
+    {
+
+      "id": 2,
+      "category": "filter-staff",
+      "title": "Admin",
+      "description": "Admin",
+      "image": "/assets/img/gallery/bethelspecialist_admin.jpg",
+      "alt":"Admin"
+    },
+    {
+      "id": 3,
+      "category": "filter-patient-care",
+      "title": "Patient-Centered Care",
+      "description": "Delivering care with empathy and respect.",
+      "image": "/assets/img/gallery/bethelspecialist_nurses.jpg",
+      "alt": "Patient Care in Progress"
+    },
+    {
+      "id": 4,
+      "category": "filter-facilities",
+      "title": "On-site Pharmacy",
+      "description": "Our fully-stocked pharmacy for your needs.",
+      "image": "/assets/img/gallery/bethelspecialist_pharmacy1.jpg",
+      "alt": "Hospital Pharmacy"
+    },
+    {
+      "id": 5,
+      "category": "filter-staff",
+      "title": "Surgical Team",
+      "description": "Expertise and precision in every procedure.",
+      "image": "/assets/img/gallery/bethelspecialist_MedicalTeam & CEO.jpg",
+      "alt": "Surgical Team"
+    },
+    {
+      "id": 6,
+      "category": "filter-patient-care",
+      "title": "Trust and Communication",
+      "description": "Building strong relationships with our patients.",
+      "image": "/assets/img/gallery/team6.jpg",
+      "alt": "Patient-Doctor Consultation"
+    },
+    {
+        "id": 7,
+        "category": "filter-facilities",
+        "title": "Bethe Specialist Hospital Building",
+        "description": "Our Medical Center Building",
+        "image": "/assets/img/gallery/bg3.jpg",
+        "alt": "Building"
+    },
+    {
+        "id": 8,
+        "category": "filter-facilities",
+        "title": "Ward",
+        "description": "Our Medical Patient Ward",
+        "image": "/assets/img/gallery/ward.jpg",
+        "alt": "Patient Ward"
+    },
+    {
+      "id": 9,
+      "category": "filter-facilities",
+      "title": "Ward",
+      "description": "Our Medical Patient Ward",
+      "image": "/assets/img/gallery/bethelspecialist_pharmacy1.jpg",
+      "alt": "Pharmacy"
+  },
+  {
+    "id": 10,
+    "category": "filter-staff",
+    "title": "Staff",
+    "description": "Our Staff",
+    "image": "/assets/img/gallery/Accountant.jpg",
+    "alt": "Accountant"
+},
+{
+  "id": 11,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Non Medical Staff & CEO",
+  "image": "/assets/img/gallery/bethelspecialist_CEOs&Non-Medical Staffs.jpg",
+  "alt": "Staff"
+},
+{
+  "id": 12,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Non Medical Staff & CEO",
+  "image": "/assets/img/gallery/bethelspecialist_Dr&CEO.jpg",
+  "alt": "Staff"
+},
+{
+  "id": 13,
+  "category": "filter-staff",
+  "title": "Endoscopy Staff",
+  "description": "Non Medical Staff & CEO",
+  "image": "/assets/img/gallery/bethelspecialist_endoscopy.jpg",
+  "alt": "Staff"
+},
+{
+  "id": 14,
+  "category": "filter-facilities",
+  "title": "Equipment",
+  "description": "Endoscopy Equipment",
+  "image": "/assets/img/gallery/bethelspecialist_endoscopy_equipment1.jpg",
+  "alt": "Equipment"
+},
+{
+  "id":15,
+  "category": "filter-facilities",
+  "title": "Equipment",
+  "description": "Endoscopy Equipment",
+  "image": "/assets/img/gallery/bethelspecialist_endoscopy_suite.jpg",
+  "alt": "Equipment"
+},
+{
+  "id":16,
+  "category": "filter-facilities",
+  "title": "Equipment",
+  "description": "Endoscopy Equipment",
+  "image": "/assets/img/gallery/service51.jpg",
+  "alt": "Equipment"
+},
+{
+  "id": 17,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Medical Staff & CEO",
+  "image": "/assets/img/gallery/bethelspecialist_Nurses&CEO.jpg",
+  "alt": "Staff"
+},
+{
+  "id": 18,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Medical Staff & CEO",
+  "image": "/assets/img/gallery/bethelspecialist_nurses&Doctor.jpg",
+  "alt": "Staff"
+},
+{
+  "id":19,
+  "category": "filter-facilities",
+  "title": "Laboratory",
+  "description": "Endoscopy Equipment",
+  "image": "/assets/img/gallery/bethelspecialist_lab3.jpg",
+  "alt": "Laboratory"
+},
+{
+  "id": 20,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Medical Staff & CEO",
+  "image": "/assets/img/gallery/bethelspecialist_nurses&Doctor.jpg",
+  "alt": "Staff"
+},
+{
+  "id": 21,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Front Desk",
+  "image": "/assets/img/gallery/bethelspecialist_frontdesk1.jpg",
+  "alt": "Staff"
+},
+{
+  "id": 22,
+  "category": "filter-staff",
+  "title": "Staff",
+  "description": "Front Desk",
+  "image": "/assets/img/gallery/bethelspecialist_frontdesk.jpg",
+  "alt":"Staff"
+},
+{
+  "id": 23,
+  "category": "filter-community",
+  "title": "Staff",
+  "description": "Staff",
+  "image": "/assets/img/gallery/bethelspecialist_full_team.jpg",
+  "alt":"community"
+},{
+   "id": 24,
+    "category": "filter-staff",
+    "title": "Our Dedicated Staff",
+    "description": "Our team of compassionate healthcare professionals.",
+    "image": "/assets/img/gallery/bethelspecialist_nurses&Doctor.jpg",
+    "alt": "Dedicated Medical Staff"
+  },{
+    "id": 25,
+    "category": "filter-staff",
+    "title": "Admin",
+    "description": "Admin",
+    "image": "/assets/img/gallery/admin.jpg",
+    "alt":"Admin"
+  },
+  {
+    "id": 26,
+    "category": "filter-facilities",
+    "title": "Equipment",
+    "description": "Equipment",
+    "image": "/assets/img/gallery/bethelspecialist_endoscopy_staffs.jpg",
+    "alt":"Admin"
+  },
+  
+  {
+    "id": 27,
+    "category": "filter-facilities",
+    "title": "Consultation Room",
+    "description": "Our state-of-the-art consultation facilities.",
+    "image": "/assets/img/gallery/ward.jpg",
+    "alt": "Modern Consultation Room"
+  },
+  {
+    "id": 28,
+    "category": "filter-staff",
+    "title": "Staff",
+    "description": "Staff",
+    "image": "/assets/img/gallery/bethelspecialist_Dr&CEO.jpg",
+    "alt":"Staff"
+  },
+  {
+    "id": 29,
+    "category": "filter-staff",
+    "title": "Staff",
+    "description": "Staff",
+    "image": "/assets/img/gallery/bethelspecialist_Drs&CEO.jpg",
+    "alt":"Staff"
+  },
+  {
+    "id": 30,
+    "category": "filter-staff",
+    "title": "Staff",
+    "description": "Staff",
+    "image": "/assets/img/gallery/bethelspecialist_CEO&Drs.jpg",
+    "alt":"Staff"
+  },
+  {
+    "id": 31,
+    "category": "filter-staff",
+    "title": "Staff",
+    "description": "Staff",
+    "image": "/assets/img/gallery/bethelspecialist_CEOs&Non-Medical Staffs.jpg",
+    "alt":"Staff"
+  },
+  {
+    "id": 32,
+    "category": "filter-staff",
+    "title": "Staff",
+    "description": "Staff",
+    "image": "/assets/img/gallery/bethelspecialist_CEO&Drs.jpg",
+    "alt":"Staff"
+  },
+  {
+    "id": 33,
+    "category": "filter-facilities",
+    "title": "Facilities",
+    "description": "Endoscopy Suite",
+    "image": "/assets/img/gallery/bethelspecialist_endoscopy_room.jpg",
+    "alt":"Endoscopy Suite"
+  },
+  {
+    "id": 34,
+    "category": "filter-facilities",
+    "title": "Facilities",
+    "description": "Laboratory",
+    "image": "/assets/img/gallery/bethelspecialist_lab5.jpg",
+    "alt":"Laboratory"
+  }
+
+  
+]
+  
