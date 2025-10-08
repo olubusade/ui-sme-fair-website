@@ -11,7 +11,7 @@ export default function Document() {
         */}
         
         {/* Favicons (Updated to generic paths for the SME Fair) */}
-        <link href="/favicon.png" rel="icon" />
+        <link href="https://www.uismefairng.com/assets/img/favicon.png" rel="icon" />
         <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
 
         {/* Fonts (Keep your specific Google Fonts setup) */}

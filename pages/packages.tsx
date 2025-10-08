@@ -53,7 +53,7 @@ export default function Packages({ packages }: PackagesPageProps) {
                 <title>Exhibitor Packages & Pricing | {eventName}</title>
                 <meta name="description" content={`Secure your premium booth space for the ${eventName}. View our transparent pricing for 2-Day Exhibition packages: 3x3m, 3x6m, and 3x9m.`} />
                 <meta property="og:title" content={`Exhibitor Packages & Pricing | ${eventName}`} />
-                <meta property="og:image" content={`${baseURL}/ui-logo.png`} />
+                <meta property="og:image" content={`${baseURL}/assets/fair/fashion-exhibit.jpg`} />
             </Head>
             {/* Page Title */}
             <div className="page-title">

@@ -139,14 +139,14 @@ export default function Home({ departments }: HomePageProps) {
                 <meta property="og:url" content="https://www.uismefairng.com/" />
                 <meta property="og:title" content={`UI SME Fair ${EVENT_YEAR} | University of Ibadan Enterprise Exhibition`} />
                 <meta property="og:description" content={`The official website for the University of Ibadan SME Fair ${EVENT_YEAR}. Register your booth, network with investors, and showcase your business. ${EVENT_DATE}, 2025.`} />
-                <meta property="og:image" content="https://www.uismefairng.com/ui-sme-logo.webp" />
+                <meta property="og:image" content="https://www.uismefairng.com/assets/img/favicon.png" />
 
                 {/* Twitter */}
                 <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://www.uismefairng.com/" />
+                <meta property="twitter:url" content="https://www.uismefairng.com/assets/img/favicon.png" />
                 <meta property="twitter:title" content={`UI SME Fair ${EVENT_YEAR} | University of Ibadan Enterprise Exhibition`} />
                 <meta property="twitter:description" content={`The official website for the University of Ibadan SME Fair ${EVENT_YEAR}. Register your booth, network with investors, and showcase your business. ${EVENT_DATE}, 2025.`} />
-                <meta property="twitter:image" content="https://www.uismefairng.com/ui-sme-logo.webp" />
+                <meta property="twitter:image" content="https://www.uismefairng.com/assets/img/favicon.png" />
             </Head>
             
             {/* Hero Section (Adapted) */}
