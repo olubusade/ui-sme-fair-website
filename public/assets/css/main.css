@@ -5967,7 +5967,7 @@ section,
 }
 .header-logo-title{
   color:var(--accent-color);
-  font-size:30px;
+  font-size:35px;
   margin-left:-160px;
   /* width:8px; */
   font-weight: bolder;
@@ -6287,25 +6287,3 @@ a{
     color: var(--primary-color);
     margin-top: 15px;
 }
-
-/* Specific CTA Button Colors */
-/* .btn-success-ui {
-    background-color: var(--success-green);
-    border-color: var(--success-green);
-    color: #fff;
-    font-weight: 600;
-}
-.btn-success-ui:hover {
-    background-color: #1e7e34;
-    border-color: #1e7e34;
-}
-.btn-warning-ui {
-    background-color: var(--ui-gold);
-    border-color: var(--ui-gold);
-    color: var(--secondary-color); 
-    font-weight: 600;
-}
-.btn-warning-ui:hover {
-    background-color: #d1a324;
-    border-color: #d1a324;
-} */

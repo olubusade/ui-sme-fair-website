@@ -5,7 +5,7 @@ import React from 'react';
 // --- Event Data and Links ---
 
 // Centralized event details
-const eventName = "UI SME Fair";
+const eventName = "UI SME Fair 2025";
 const eventYear = new Date().getFullYear();
 const generalEmail = "smefair@ui.edu.ng";
 const sponsorshipContact = "+234 903 084 1958";

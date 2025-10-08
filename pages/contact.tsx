@@ -182,7 +182,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact & Sponsorship Inquiry | {eventName}</title>
+        <title>Contact & Sponsorship Inquiry </title>
         <meta name="description" content={`Get in touch with the ${eventName} team for general inquiries, media accreditation, or custom sponsorship opportunities. Find our venue, The International Conference Centre at the University of Ibadan, on the map.`} />
         <meta name="keywords" content="contact UI SME Fair, sponsorship inquiry, media accreditation, exhibition contact, International Conference Centre UI map" />
         
@@ -218,7 +218,7 @@ export default function Contact() {
         <div className="title-wrapper">
           <h1>Contact & Corporate Relations</h1>
           <p>
-            Have a question about the fair, need media access, or interested in a **custom sponsorship package**? Reach out to the {eventName} team.
+            Have a question about the fair, need media access, or interested in a <b>custom sponsorship package</b>? Reach out to the {eventName} team.
           </p>
         </div>
       </div>
@@ -266,11 +266,12 @@ export default function Contact() {
                     <h4>Sponsorship Hotline</h4>
                     <p>
                       {/* --- MODIFIED: Removed inline style, use CSS for styling --- */}
-                      <a 
+                      <Link
+                        style={{color:'white'}}
                         href={`tel:${sponsorshipContact.replace(/\s+/g, '')}`} 
                       >
                         {sponsorshipContact}
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>

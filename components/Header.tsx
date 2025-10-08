@@ -51,7 +51,7 @@ const Header = () => {
             alt="UI SME Fair Logo"
             />
             <h1 className="header-logo-title ms-2">
-              <span className='header-label'>University of Ibadan</span> <span className="specialist">SME Fair</span> <span className='header-label'>2025</span>
+              <span className='header-label'>UI</span> <span className="specialist">SME Fair</span> <span className='header-label'>2025</span>
         </h1>
         </Link>
         

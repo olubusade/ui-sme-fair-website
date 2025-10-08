@@ -4,15 +4,12 @@ import Link from 'next/link';
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import Head from 'next/head';
 
-// --- Configuration & Constants ---
-// Fair Start Date (October 30, 2025)
+// --- Configuration & Constants (STABLE on Server/Client) ---
 const EVENT_START_DATE = new Date('2025-10-30T00:00:00');
-// Registration closes 7 days before the event
 const DAYS_BEFORE_CLOSURE = 7; 
 const REGISTRATION_CLOSURE_DATE = new Date(EVENT_START_DATE.getTime() - DAYS_BEFORE_CLOSURE * 24 * 60 * 60 * 1000);
-const CURRENT_DATE = new Date();
 
-// Data Mappings
+// Data Mappings (Rest of the mappings remain the same)
 const PRODUCT_CATEGORIES = [
     'Fashion & Apparel (Clothing, Accessories)', 
     'Food & Beverages (Packaged Goods, Catering)', 
@@ -34,9 +31,8 @@ const STUDENTPRENEUR_FEE = 2000;
 // Validation Rules
 const MIN_NAME_LENGTH = 2; 
 
-// --- Component Interfaces ---
+// --- Component Interfaces (Unchanged) ---
 interface FormData {
-    // 1. Contact Information
     fname: string; 
     lname: string; 
     email: string;
@@ -44,15 +40,11 @@ interface FormData {
     phone: string; 
     phoneAlternative: string;
     designation: string;
-
-    // 2. Business Information
     businessName: string;
     businessType: string; 
     businessAddress: string;
     websiteHandle: string;
     productsServices: string;
-
-    // 3. Exhibition Details
     registrationType: 'Exhibitor' | 'Sponsor' | 'Studentpreneur' | 'Participant' | 'Others' | '';
     otherRegistrationType: string;
     boothSize: '3x3' | '3x6' | '3x9' | 'N/A' | ''; 
@@ -60,22 +52,14 @@ interface FormData {
     staffCount: number;
     additionalSupport: 'Yes' | 'No' | '';
     supportSpecification: string;
-
-    // 4. Competition Interest (NEW SECTION)
     interestPitching: boolean;
     interestCooking: boolean;
-
-    // 5. Declaration
     boothFee: number; 
     declarationName: string;
     declarationDate: string;
-
-    // Bot/Security
     honeyName: string;
     captchaAnswer: string;
 }
-
-// --- Validation State Interface ---
 interface ValidationErrors {
     fname?: string;
     lname?: string;
@@ -86,69 +70,82 @@ interface ValidationErrors {
     declarationName?: string;
     captchaAnswer?: string;
 }
-
 interface CaptchaState {
     num1: number;
     num2: number;
     answer: number;
 }
 
-// --- Initial State ---
+
+// --- Initial State Functions ---
+
+// 1. Initial State for Form Data (mostly stable/static)
 const getInitialState = (): FormData => ({
     fname: '', lname: '', email: '', dialCode: '+234', phone: '', phoneAlternative: '', designation: '',
     businessName: '', businessType: '', businessAddress: '', websiteHandle: '', productsServices: '',
     registrationType: '', otherRegistrationType: '', boothSize: '', exhibitedBefore: '', staffCount: 1, additionalSupport: 'No', supportSpecification: '',
-    // New Competition Fields
     interestPitching: false, interestCooking: false,
-    // Declaration
+    // Use a stable date format for SSR (client will correct if necessary)
     boothFee: 0, declarationName: '', declarationDate: new Date().toISOString().split('T')[0],
-    // Security
     honeyName: '', captchaAnswer: ''
 });
 
+// 2. CAPTCHA Generator (Deterministic function, but uses Math.random)
 const generateCaptcha = (): CaptchaState => {
     const num1 = Math.floor(Math.random() * 10) + 1;
     const num2 = Math.floor(Math.random() * 10) + 1;
     return { num1, num2, answer: num1 + num2 };
 };
 
+// 3. STABLE CAPTCHA State for Server Render
+const INITIAL_CAPTCHA_STATE: CaptchaState = { num1: 0, num2: 0, answer: 0 }; 
+// Use 0, 0, 0 so the server renders a predictable value, 
+// and the client updates it immediately after mounting.
+
+
 // --- MAIN COMPONENT ---
 export default function Register() {
     const formActionUrl = '/api/register'; 
 
-    const [isRegistrationOpen, setIsRegistrationOpen] = useState(true);
-    const [daysToEvent, setDaysToEvent] = useState(0);
+    // FIX: Initialize dynamic state variables (status, countdown, captcha) with a stable value.
+    const [isRegistrationOpen, setIsRegistrationOpen] = useState(false); // Assume closed until client confirms
+    const [daysToEvent, setDaysToEvent] = useState(0); 
 
     const [formData, setFormData] = useState<FormData>(getInitialState);
     const [errors, setErrors] = useState<ValidationErrors>({});
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const [showMessage, setShowMessage] = useState(false); // Initially false, shown only on submit
+    const [showMessage, setShowMessage] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [captcha, setCaptcha] = useState<CaptchaState>(generateCaptcha);
+    const [captcha, setCaptcha] = useState<CaptchaState>(INITIAL_CAPTCHA_STATE); // FIX: Use stable initial state
 
-    // --- Strict Validation Patterns ---
+    // --- Strict Validation Patterns --- (Unchanged)
     const email_pattern = /^\S+@\S+\.\S+$/;
-    const phone_pattern = /^\d{9,11}$/; // 9-11 digits for local number (excluding dial code)
+    const phone_pattern = /^\d{9,11}$/; 
     const name_pattern = /^[a-zA-Z\s'-]+$/; 
     const NON_DIGIT_PATTERN = /[^\d]/g; 
     
-    // --- EFFECT: Check Registration Status, Calculate Countdown, Generate Captcha ---
+    // --- EFFECT: Client-side Initialization (SOLVES HYDRATION) ---
     useEffect(() => {
-        generateCaptcha();
+        const currentDateOnClient = new Date(); // Get fresh date on client (safe here)
+
+        // 1. Initialize Captcha
+        setCaptcha(generateCaptcha());
         
-        if (CURRENT_DATE > REGISTRATION_CLOSURE_DATE) {
+        // 2. Initialize Registration Status
+        if (currentDateOnClient > REGISTRATION_CLOSURE_DATE) {
             setIsRegistrationOpen(false);
         } else {
             setIsRegistrationOpen(true);
         }
 
-        const timeDiff = EVENT_START_DATE.getTime() - CURRENT_DATE.getTime();
+        // 3. Initialize Countdown
+        const timeDiff = EVENT_START_DATE.getTime() - currentDateOnClient.getTime();
         const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
         setDaysToEvent(days > 0 ? days : 0);
-    }, []);
+    }, []); // Runs once on client mount
 
-    // --- Dynamic Fee Calculation ---
+    // --- Dynamic Fee Calculation --- (Unchanged)
     useEffect(() => {
         let fee = 0;
         if (formData.registrationType === 'Exhibitor' && formData.boothSize && formData.boothSize !== 'N/A') {
@@ -160,28 +157,25 @@ export default function Register() {
     }, [formData.registrationType, formData.boothSize]);
 
 
-    // --- Enhanced Change Handler with Live Validation ---
+    // --- Enhanced Change Handler with Live Validation --- (Unchanged)
     const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value, type } = e.target;
         let newValue: string | number | boolean = value;
         let errorMsg = '';
 
-        // Handle checkbox/number inputs
         if (type === 'checkbox') {
             newValue = (e.target as HTMLInputElement).checked;
         } else if (name === 'staffCount') {
             newValue = parseInt(value) || 0;
         }
 
-        // 1. Phone Number Filtering & Validation
         if (name === 'phone' || name === 'phoneAlternative') {
-            newValue = value.replace(NON_DIGIT_PATTERN, ''); // Remove non-digits
+            newValue = value.replace(NON_DIGIT_PATTERN, '');
             if (newValue.length > 0 && (newValue.length < 9 || newValue.length > 11)) {
                 errorMsg = 'Must be 9-11 digits.';
             }
         }
         
-        // 2. Name Filtering & Validation (Excluding digits)
         if (name === 'fname' || name === 'lname' || name === 'declarationName') {
             if (/\d/.test(value)) {
                 errorMsg = 'Name cannot contain digits.';
@@ -190,27 +184,22 @@ export default function Register() {
             }
         }
         
-        // 3. Email Validation
         if (name === 'email' && value.trim().length > 0 && !email_pattern.test(value)) {
             errorMsg = 'Invalid email format.';
         }
 
-        // 4. Other Registration Type Validation
         if (name === 'otherRegistrationType' && value.trim() === '') {
             errorMsg = 'Please specify the registration type.';
         }
 
         setFormData(prev => ({ ...prev, [name]: newValue }));
 
-        // Update inline errors
         setErrors(prev => ({ 
             ...prev, 
             [name]: errorMsg,
-            // Clear errors when input is valid
             ...(!errorMsg && name !== 'captchaAnswer' ? { [name]: undefined } : {})
         }));
 
-        // Reset conditional fields
         if (name === 'registrationType' && newValue !== 'Exhibitor') {
             setFormData(prev => ({ ...prev, boothSize: '' as FormData['boothSize'] }));
         }
@@ -219,12 +208,11 @@ export default function Register() {
         }
     }, [formData.registrationType, formData.additionalSupport]);
     
-    // --- Final Submission Validation ---
+    // --- Final Submission Validation --- (Unchanged)
     const validateFormOnSubmit = () => {
         let formIsValid = true;
         const newErrors: ValidationErrors = {};
 
-        // 1. Name and Length Validation
         if (!name_pattern.test(formData.fname) || formData.fname.trim().length < MIN_NAME_LENGTH) {
             newErrors.fname = `Minimum ${MIN_NAME_LENGTH} chars required and no digits.`;
             formIsValid = false;
@@ -238,19 +226,16 @@ export default function Register() {
             formIsValid = false;
         }
 
-        // 2. Email Validation
         if (!email_pattern.test(formData.email)) {
             newErrors.email = 'Please enter a valid email address.';
             formIsValid = false;
         }
         
-        // 3. Phone Validation (Primary)
         if (!phone_pattern.test(formData.phone)) {
             newErrors.phone = 'Primary phone must be 9-11 digits.';
             formIsValid = false;
         }
 
-        // 4. Conditional Checks
         if (formData.registrationType === 'Others' && formData.otherRegistrationType.trim() === '') {
             newErrors.otherRegistrationType = 'You must specify the "Other" registration type.';
             formIsValid = false;
@@ -265,6 +250,7 @@ export default function Register() {
     };
 
 
+    // --- Form Submission --- (Unchanged logic, uses the new state structure)
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
@@ -280,31 +266,28 @@ export default function Register() {
         setShowMessage(true);
         setIsError(false);
         
-        // Run final form validation
         if (!validateFormOnSubmit()) {
             setMessage('Please fix the errors indicated in the form before submitting.');
             setIsError(true);
             setLoading(false);
-            generateCaptcha();
+            setCaptcha(generateCaptcha()); // Regenerate captcha on client
             return;
         }
 
-        // Captcha Validation
         if (parseInt(formData.captchaAnswer) !== captcha.answer) {
             setMessage('Incorrect CAPTCHA answer. Please try again.');
             setErrors(prev => ({ ...prev, captchaAnswer: 'Incorrect CAPTCHA answer.' }));
             setIsError(true);
             setLoading(false);
-            generateCaptcha();
+            setCaptcha(generateCaptcha()); // Regenerate captcha on client
             return;
         }
         
-        // Honeypot check
         if (formData.honeyName) {
             setMessage('Submission successful! (Bot blocked)');
             setIsError(false);
             setLoading(false);
-            generateCaptcha();
+            setCaptcha(generateCaptcha()); // Regenerate captcha on client
             setTimeout(() => setMessage(''), 5000);
             return;
         }
@@ -329,7 +312,7 @@ export default function Register() {
             if (response.ok) {
                 setMessage(result.message || 'Registration successful! Check email for payment and next steps.');
                 setIsError(false);
-                setFormData(getInitialState()); // Clear form upon success
+                setFormData(getInitialState());
             } else {
                 setMessage(result.message || 'Server error: Could not complete registration.');
                 setIsError(true);
@@ -340,7 +323,7 @@ export default function Register() {
             setIsError(true);
         } finally {
             setLoading(false);
-            generateCaptcha();
+            setCaptcha(generateCaptcha()); // Regenerate captcha on client
             setTimeout(() => {
                 setMessage('');
                 setShowMessage(false);
@@ -359,7 +342,7 @@ export default function Register() {
                 <p className='mb-1'><strong>Account Name:</strong> UNIBADAN MICROFINANCE BANK LTD.</p>
                 <p className='mb-0'><strong>Account No:</strong> 3103676217</p>
             </div>
-            <p className='mt-3 text-danger fw-bold'>**NOTE: You will receive an email confirmation requesting proof of payment after submission.**</p>
+            <p className='mt-3 text-danger fw-bold'><b>NOTE: You will receive an email confirmation requesting proof of payment after submission.</b></p>
         </div>
     ), [formData.boothFee]);
 
@@ -380,7 +363,7 @@ export default function Register() {
                     Thank you for your overwhelming interest! Our exhibitor and studentpreneur registration has reached capacity.
                 </p>
                 <p className="lead fw-bold">
-                    The UI SME Fair begins in just **{daysToEvent} days** (on **{EVENT_START_DATE.toDateString()}**).
+                    The UI SME Fair begins in just <b>{daysToEvent} days</b> (on <b>{EVENT_START_DATE.toDateString()}</b>).
                 </p>
                 <p className="mt-4">
                     You can still attend the fair as a general visitor for free. For sponsorship or media inquiries, please contact our team directly.
@@ -454,7 +437,7 @@ export default function Register() {
                                         <div>
                                             <h5>Step 2: Make Payment</h5>
                                             <p className="mb-0">
-                                                Transfer the exact fee to the **First Bank** account provided on the form.
+                                                Transfer the exact fee to the <b>First Bank</b> account provided on the form.
                                             </p>
                                         </div>
                                     </div>
@@ -472,7 +455,7 @@ export default function Register() {
                                     <div className="alert alert-danger p-3">
                                         <h6 className="mb-2"><i className="bi bi-exclamation-triangle-fill me-2" /> Important!</h6>
                                         <p className="mb-0">
-                                            Your slot is reserved upon submission, but **not confirmed** until payment is verified by the Fair Organising Committee.
+                                            Your slot is reserved upon submission, but <b>not confirmed</b> until payment is verified by the Fair Organising Committee.
                                         </p>
                                     </div>
                                 </div>
@@ -659,7 +642,7 @@ export default function Register() {
                                         {(formData.interestPitching || formData.interestCooking) && (
                                             <div className="col-12 mt-3">
                                                 <div className="alert alert-info py-2 small" role="alert">
-                                                    * Note: Participation may be subject to **Student** or **Exhibitor** status and specific competition rules. Details will be sent via email.
+                                                    <b>Note:</b> Participation may be subject to <b>Student</b> or <b>Exhibitor</b> status and specific competition rules. Details will be sent via email.
                                                 </div>
                                             </div>
                                         )}

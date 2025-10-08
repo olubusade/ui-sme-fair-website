@@ -1,38 +1,11 @@
 {
   "version": 4,
-  "routes": {
-    "/packages": {
-      "initialRevalidateSeconds": false,
-      "srcRoute": null,
-      "dataRoute": "/_next/data/bFsAGlc-U_KpjRoM1KLda/packages.json",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/": {
-      "initialRevalidateSeconds": false,
-      "srcRoute": null,
-      "dataRoute": "/_next/data/bFsAGlc-U_KpjRoM1KLda/index.json",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    }
-  },
+  "routes": {},
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "b3377ecb7ebd69c3e3cf1421dbd968a4",
-    "previewModeSigningKey": "ca4f018f3ef60b0c24d1ce59d283efe86adf6c54c4e66725f96a56d634f4430b",
-    "previewModeEncryptionKey": "b39454e68a2e773314bc0af9729b76d2fd09f061797236d2c20a65438ce605c6"
+    "previewModeId": "f9403f6d840ced8f15ead8ad7fb4cc5f",
+    "previewModeSigningKey": "5bdb4d4798b2052a27f46769ed8ef5f06bd3a902b991d64b09b59fc74c3a7f9f",
+    "previewModeEncryptionKey": "a76642d6415694156ebc43e530366f60137666778ecc279dd313ab082157bf50"
   }
 }

@@ -1,32 +1,20 @@
 {
   "components/Layout.tsx -> @srexi/purecounterjs": {
-    "id": 1747,
+    "id": "components/Layout.tsx -> @srexi/purecounterjs",
     "files": [
-      "static/chunks/747.a5266ad213f55f61.js"
+      "static/chunks/_pages-dir-browser_node_modules_srexi_purecounterjs_dist_purecounter_js.js"
     ]
   },
   "components/Layout.tsx -> aos": {
-    "id": 7304,
+    "id": "components/Layout.tsx -> aos",
     "files": [
-      "static/chunks/304.89f49e6134922640.js"
+      "static/chunks/_pages-dir-browser_node_modules_aos_dist_aos_js.js"
     ]
   },
   "components/Layout.tsx -> swiper": {
-    "id": 425,
+    "id": "components/Layout.tsx -> swiper",
     "files": [
-      "static/chunks/425.248df64ecb8c35ba.js"
-    ]
-  },
-  "pages/gallery.tsx -> glightbox": {
-    "id": 648,
-    "files": [
-      "static/chunks/648.a849c758fcfbe08d.js"
-    ]
-  },
-  "pages/gallery.tsx -> isotope-layout": {
-    "id": 6650,
-    "files": [
-      "static/chunks/650.55abd222934ed9d7.js"
+      "static/chunks/_pages-dir-browser_node_modules_swiper_swiper_mjs.js"
     ]
   }
 }
