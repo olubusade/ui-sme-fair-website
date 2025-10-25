@@ -5,8 +5,8 @@ import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import Head from 'next/head';
 
 // --- Configuration & Constants (STABLE on Server/Client) ---
-const EVENT_START_DATE = new Date('2025-10-30T00:00:00');
-const DAYS_BEFORE_CLOSURE = 7; 
+const EVENT_START_DATE = new Date('2025-11-05T00:00:00');
+const DAYS_BEFORE_CLOSURE = 1; 
 const REGISTRATION_CLOSURE_DATE = new Date(EVENT_START_DATE.getTime() - DAYS_BEFORE_CLOSURE * 24 * 60 * 60 * 1000);
 
 // Data Mappings (Rest of the mappings remain the same)
@@ -45,7 +45,9 @@ interface FormData {
     businessAddress: string;
     websiteHandle: string;
     productsServices: string;
-    registrationType: 'Exhibitor' | 'Sponsor' | 'Studentpreneur' | 'Participant' | 'Others' | '';
+    registrationType: 'Exhibitor' | 'Sponsor'
+    /* | 'Studentpreneur' */ 
+    | 'Participant' | 'Others' | '';
     otherRegistrationType: string;
     boothSize: '3x3' | '3x6' | '3x9' | 'N/A' | ''; 
     exhibitedBefore: 'Yes' | 'No' | '';
@@ -150,9 +152,9 @@ export default function Register() {
         let fee = 0;
         if (formData.registrationType === 'Exhibitor' && formData.boothSize && formData.boothSize !== 'N/A') {
             fee = BOOTH_PRICING[formData.boothSize] || 0;
-        } else if (formData.registrationType === 'Studentpreneur') {
+        } /* else if (formData.registrationType === 'Studentpreneur') {
             fee = STUDENTPRENEUR_FEE;
-        }
+        } */
         setFormData(prev => ({ ...prev, boothFee: fee }));
     }, [formData.registrationType, formData.boothSize]);
 
@@ -534,7 +536,7 @@ export default function Register() {
                                             <select name="registrationType" className="form-select" value={formData.registrationType} onChange={handleChange} required>
                                                 <option value="">Select Registration Type</option>
                                                 <option value="Exhibitor">A. Exhibitor (Booth Required)</option>
-                                                <option value="Studentpreneur">B. Studentpreneur (₦{STUDENTPRENEUR_FEE.toLocaleString()})</option>
+                                                {/* <option value="Studentpreneur">B. Studentpreneur (₦{STUDENTPRENEUR_FEE.toLocaleString()})</option> */}
                                                 <option value="Sponsor">C. Sponsor (Contact for details)</option>
                                                 <option value="Participant">D. Participant (General attendee)</option>
                                                 <option value="Others">E. Others (Specify below)</option>

@@ -14,3 +14,4 @@ yarn-debug.log*
 # Secrets
 .env
 .env.local
+.early.coverage
