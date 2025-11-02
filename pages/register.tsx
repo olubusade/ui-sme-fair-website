@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 // --- Configuration & Constants (STABLE on Server/Client) ---
 const EVENT_START_DATE = new Date('2025-11-05T00:00:00');
-const DAYS_BEFORE_CLOSURE = 1; 
+const DAYS_BEFORE_CLOSURE = 4; 
 const REGISTRATION_CLOSURE_DATE = new Date(EVENT_START_DATE.getTime() - DAYS_BEFORE_CLOSURE * 24 * 60 * 60 * 1000);
 
 // Data Mappings (Rest of the mappings remain the same)
